@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DNS Media Vault</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">DNS <span>Media Vault</span></div>
+      <nav class="nav-links">
+        <a class="active" href="index.html">Application</a>
+        <a href="features.html">Fonctionnalités</a>
+        <a href="prompts.html">Prompts</a>
+        <a href="credits.html">Crédits</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Gestion professionnelle de collection disques / média</h1>
+      <p>Style inspiré macOS, interface responsive, sauvegarde/restauration JSON, statistiques, favoris, suivi des prêts et recherche rapide.</p>
+    </section>
+
+    <section class="grid">
+      <aside class="card">
+        <h2>Ajouter / Modifier</h2>
+        <form id="media-form">
+          <label for="title">Titre *</label>
+          <input id="title" required placeholder="Ex: Discovery" />
+
+          <label for="artist">Artiste / Auteur</label>
+          <input id="artist" placeholder="Ex: Daft Punk" />
+
+          <label for="type">Type</label>
+          <select id="type">
+            <option>Vinyle</option>
+            <option>CD</option>
+            <option>DVD</option>
+            <option>Blu-ray</option>
+            <option>Jeu</option>
+            <option>Livre</option>
+            <option>Numérique</option>
+          </select>
+
+          <label for="genre">Genre</label>
+          <input id="genre" placeholder="Ex: Electro" />
+
+          <label for="year">Année</label>
+          <input id="year" type="number" min="1900" max="2099" />
+
+          <label for="notes">Notes</label>
+          <textarea id="notes" placeholder="État, édition, emplacement..."></textarea>
+
+          <label><input id="favorite" type="checkbox" /> Favori</label>
+          <label><input id="loaned" type="checkbox" /> Prêté</label>
+
+          <div class="btn-row">
+            <button id="submit-btn" class="primary" type="submit">Ajouter</button>
+            <button id="cancel-btn" type="button">Annuler</button>
+          </div>
+        </form>
+      </aside>
+
+      <section class="card">
+        <h2>Ma collection</h2>
+
+        <div class="stats">
+          <div class="stat"><strong id="stat-total">0</strong><small>Total médias</small></div>
+          <div class="stat"><strong id="stat-fav">0</strong><small>Favoris</small></div>
+          <div class="stat"><strong id="stat-loaned">0</strong><small>Prêtés</small></div>
+        </div>
+
+        <div class="toolbar">
+          <input id="query" placeholder="Rechercher titre, artiste, genre..." />
+          <select id="filter">
+            <option value="all">Tous</option>
+            <option value="favorites">Favoris</option>
+            <option value="loaned">Prêtés</option>
+          </select>
+          <select id="sort">
+            <option value="createdAt">Plus récents</option>
+            <option value="title">Titre A→Z</option>
+            <option value="year">Année</option>
+          </select>
+        </div>
+
+        <div class="btn-row" style="margin-bottom: 12px;">
+          <button id="export-btn" class="success" type="button">Sauvegarder (JSON)</button>
+          <label for="import-file" class="chip" style="cursor:pointer; padding:8px 10px;">
+            Restaurer une sauvegarde
+          </label>
+          <input id="import-file" type="file" accept="application/json" style="display:none;" />
+          <button id="reset-btn" class="danger" type="button">Vider la collection</button>
+        </div>
+
+        <div id="collection-list" class="list"></div>
+      </section>
+    </section>
+
+    <p class="footer">DNS Media Vault — Application locale, vos données restent sur votre navigateur.</p>
+  </main>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
